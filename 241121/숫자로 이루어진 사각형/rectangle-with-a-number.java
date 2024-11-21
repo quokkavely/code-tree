@@ -23,7 +23,7 @@ public class Main {
                 }
             } 
 
-            if ((i+1) % 4 == 0 ) {
+            if ((i+1) % n == 0 ) {
                 System.out.println();
             } else {
                 System.out.print(" ");
