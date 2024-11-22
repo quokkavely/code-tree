@@ -19,11 +19,15 @@ public class Main {
     private static boolean isValidDate (int y, int m, int d) {
         
         //2월 29일 제거
-        if (y % 4 != 0) {
-            if(m == 2 && d >= 29) {return false; }
-        } else {
-            if (d > 29) return false;
-        }
+        if (m == 2) {
+            if(isYoonYear(y)) {
+                if(d > 29) return false;
+            }
+            else {
+                //윤년이 아니라면
+                 if(d > 28 ) return false;
+            }
+        } 
 
         if((m == 4 || m == 6 || m == 9 || m == 11) && d > 30) {
             return false;
@@ -48,5 +52,18 @@ public class Main {
         }
 
         return answer;
+    }
+
+    private static boolean isYoonYear (int y) {
+
+        //윤년 true, 윤년이 아니면 false; 
+
+        if (y % 4 == 0) {
+            if (y % 100 == 0 && y % 400 == 0 ) {return true;}
+            else if (y % 100 == 0) return false;
+            else return true;
+        }
+
+        return false;
     }
 }
