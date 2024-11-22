@@ -21,6 +21,8 @@ public class Main {
         //2월 29일 제거
         if (y % 4 != 0) {
             if(m == 2 && d >= 29) {return false; }
+        } else {
+            if (d > 29) return false;
         }
 
         if((m == 4 || m == 6 || m == 9 || m == 11) && d > 30) {
