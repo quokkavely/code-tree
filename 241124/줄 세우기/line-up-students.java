@@ -12,6 +12,17 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student student) {
+        
+        //키가 같다면 몸무게 순
+        if(this.tall == student.tall) {
+            if(this.weight == student.weight) {
+                // 몸무게가 같다면 번호 작은 순
+                return this.number - student.number;
+            } else {
+                return student.weight - this.weight;
+            }
+        }
+
         return student.tall - this.tall;
     }
 };
