@@ -38,7 +38,7 @@ public class Main {
 
         if (day.equals("Mon") || day.equals(dayOfD2)) {
             number = (d / 7) + 1 ; 
-        } else if (day.equals(dayOfD2)){
+        } else if( idx <= d % 7){
             number = (d / 7) + 1 ; 
         } else {
             number = d / 7 ;
