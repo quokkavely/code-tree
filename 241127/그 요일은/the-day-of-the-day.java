@@ -27,13 +27,10 @@ public class Main {
         String[] week = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
         // d1 이 월요일
         // d2 의 요일은 나머지로 계산
-        String dayOfD2 = week[d % 7]; 
+        //String dayOfD2 = week[d % 7]; 
         
-        //m2 d2 의 요일이 day와 같을 때 + 1
-        if ( dayOfD2.equals(day) ) {
+        if ( d/7 >= 1) {
             number = d / 7 + 1 ; 
-        } else {
-            number = d / 7;
         }
 
         return number;
