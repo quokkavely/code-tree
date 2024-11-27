@@ -28,12 +28,21 @@ public class Main {
         // d1 이 월요일
         // d2 의 요일은 나머지로 계산
         String dayOfD2 = week[d % 7]; 
+        
+        int idx = 0;
+        for( int i = 0; i < week.length; i++) {
+            if(week[i].equals(day)) {
+                idx = i;
+            }
+        }
 
-        if ( d / 7 >= 1) {
+        if (day.equals("Mon") || day.equals(dayOfD2)) {
             number = (d / 7) + 1 ; 
-        } else if (day.equals("Mon") || day.equals(dayOfD2)){
-            number = 1;
-        } 
+        } else if (day.equals(dayOfD2)){
+            number = (d / 7) + 1 ; 
+        } else {
+            number = d / 7 ;
+        }
 
         return number;
     }
