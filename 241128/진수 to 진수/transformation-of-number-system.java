@@ -19,23 +19,14 @@ public class Main {
         }
 
         // 십진수 -> b 진수로 변환
-        int idx = 0;
-        int[] digits = new int[100];
-        while (true) {
-            if(num < b) { 
-                digits[idx++] = num;
-                break;
-            }
-            digits[idx++] = num % b;
+        List<Integer> list = new ArrayList<>();
+        while (num > 0) {
+            list.add(num % b);
             num = num / b ;
         }
 
-        for(int i = idx-1 ; i >= 0 ; i--) {
-            System.out.print(digits[i]);
+        for(int i = list.size()-1 ; i >= 0 ; i--) {
+            System.out.print(list.get(i));
         }
-
-
     }
-
-
 }
