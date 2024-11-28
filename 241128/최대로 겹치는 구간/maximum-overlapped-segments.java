@@ -25,10 +25,11 @@ public class Main {
 
         
         for(Map.Entry<Integer,Integer> entry : map.entrySet()) {
-            if (entry.getValue() > count) {
+            if (entry.getValue() >= count) {
                 count = entry.getValue();               
             }
         }
+
         System.out.println(count);
 
     }
