@@ -16,18 +16,18 @@ public class Main {
 
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            for (int j = arr[i][0]; j <= arr[i][1]; j++) {
+            for (int j = arr[i][0]; j < arr[i][1]; j++) {
                 map.put(j, map.getOrDefault(j, 0) + 1);
             }
         }
 
-        int count = 0; // 몇번 등장?
+        int count = 0; // 몇번 겹치는지?
 
         
         for(Map.Entry<Integer,Integer> entry : map.entrySet()) {
-            if (entry.getValue() >= count) {
+            if (entry.getValue() > count) {
                 count = entry.getValue();               
-            }
+            } 
         }
 
         System.out.println(count);
