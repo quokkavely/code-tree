@@ -11,19 +11,19 @@ public class Main {
         for(int i = 0 ;  i < n ; i ++) {
             int distance = sc.nextInt();
             char direction = sc.next().charAt(0);
-
+            
             if(direction == 'R') {
                 for(int j = loc; j < loc + distance ; j++) {
                     map.put(j, 'B');
                 }
-                loc += distance;
 
             } else {
-                for(int j = loc; j > loc - distance ; j--) {
+                distance = -1 * distance;
+                for(int j = loc; j > loc + distance ; j--) {
                     map.put(j-1, 'W');
                 }
-                loc -= distance;
             }
+            loc += distance;
         }
 
         int blackCnt = 0;
