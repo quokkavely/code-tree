@@ -26,17 +26,19 @@ public class Main {
     }
 
     private static int remainArea (int ax1, int ax2, int overlapX1, int overlapX2, int ay1, int ay2, int overlapY1, int overlapY2) {
-        if (ax2 - ax1 <= overlapX2 - overlapX1 && ay2 - ay1 <= overlapY2 - overlapY1) {
+
+        int axLeng = ax2 - ax1;
+        int ayLeng = ay2 - ay1;
+        int overXLeng = overlapX2 - overlapX1;
+        int overYLeng = overlapY2 - overlapY1;
+
+        if (axLeng <= overXLeng && ayLeng <= overYLeng) {
             return 0; 
         } 
-        //가로만 덮었을 때
-        else if(ax2 - ax1 <= overlapX2 - overlapX1) {
-            return (ax2 - ax1) * (ay2 - overlapY2);
+        //가로나 세로만 덮었을 때
+        else if(axLeng <= overXLeng || ayLeng <= overYLeng) {
+            return (axLeng * ayLeng) - (overXLeng * overYLeng);
         } 
-        //세로만 덮었을때
-        else if(ay2 - ay1 <= overlapY2 - overlapY1) {
-            return (ax2 - overlapX2) * (ay2 - ay1);
-        }
         else {
             return (ax2 - ax1) * (ay2 - ay1);
         }
