@@ -36,9 +36,13 @@ public class Main {
             return 0; 
         } 
         //가로나 세로만 덮었을 때
-        else if(axLeng <= overXLeng || ayLeng <= overYLeng) {
+        else if(axLeng <= overXLeng && (ax1 >= overlapX1 || ax2 <= overlapX2)) {
             return (axLeng * ayLeng) - (overXLeng * overYLeng);
-        } 
+        }
+        
+        else if(ayLeng <= overYLeng && (ay1 >= overlapY1 || ay2 <= overlapY2)) {
+            return (axLeng * ayLeng) - (overXLeng * overYLeng);
+        }
         else {
             return (ax2 - ax1) * (ay2 - ay1);
         }
