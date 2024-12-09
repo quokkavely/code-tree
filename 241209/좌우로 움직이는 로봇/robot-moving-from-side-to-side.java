@@ -48,8 +48,8 @@ public class Main {
         else leng = mbefore;
 
         for(int i = 1 ; i <= leng ; i ++) {
-            if(nMap.get(i) == mMap.get(i)) {
-                if(nMap.get(i-1) != mMap.get(i-1)) cnt ++;
+            if(nMap.getOrDefault(i, nloc) == mMap.getOrDefault(i, mloc)) {
+                if(nMap.getOrDefault(i-1, nloc) != mMap.getOrDefault(i-1, mloc)) cnt ++;
             }
         }
 
