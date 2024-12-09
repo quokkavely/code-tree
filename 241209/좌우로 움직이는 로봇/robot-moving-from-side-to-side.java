@@ -1,64 +1,84 @@
 import java.util.*;
-public class Main {
-    public static void main(String[] args) {
 
+public class Main {
+    static class Move {
+        int t;
+        char d;
+        Move(int t, char d) {
+            this.t = t;
+            this.d = d;
+        }
+    }
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        //시간, 위치
-        Map<Integer,Integer> nMap = new HashMap<>();
-        Map<Integer,Integer> mMap = new HashMap<>();
+        Move[] A = new Move[n];
+        Move[] B = new Move[m];
 
-        // 초기 위치 기록
-        nMap.put(0,0);
-        mMap.put(0,0);
-        
-        int nbefore = 1;
-        int nloc = 0;
-        for(int i = 0; i < n ; i ++) {
-            int sec = sc.nextInt();
-            char dir = sc.next().charAt(0);
-            
-            for(int j = nbefore; j < sec + nbefore; j ++) {
-                if(dir == 'R') nloc ++;
-                else nloc--;
-                
-                nMap.put(j, nloc);
-                //System.out.println( j + ", n위치" + nloc);
-            }
-            nbefore += sec;
+        for (int i = 0; i < n; i++) {
+            int t = sc.nextInt();
+            char d = sc.next().charAt(0);
+            A[i] = new Move(t, d);
         }
 
-        int mbefore = 1;
-        int mloc = 0;
-        for(int i = 0; i < m ; i ++) {
-            int sec = sc.nextInt();
-            char dir = sc.next().charAt(0);
-            
-            for(int j = mbefore; j < sec + mbefore; j ++) {
-                if(dir == 'R') mloc ++; 
-                else mloc--;
-                
-                mMap.put(j, mloc);
-                //System.out.println( j + ", m위치" + mloc);
-            }
-            mbefore += sec;
+        for (int i = 0; i < m; i++) {
+            int t = sc.nextInt();
+            char d = sc.next().charAt(0);
+            B[i] = new Move(t, d);
         }
+
+        int aIndex = 0, bIndex = 0;
+        int aTimeLeft = A.length > 0 ? A[aIndex].t : 0;
+        int bTimeLeft = B.length > 0 ? B[bIndex].t : 0;
+
+        int aPos = 0;
+        int bPos = 0;
+
+        int prevAPos = aPos;
+        int prevBPos = bPos;
 
         int cnt = 0;
-        int leng = Math.max(nbefore, mbefore) - 1;
+        int currentTime = 0;
 
-        for(int i = 1 ; i <= leng ; i ++) {
-            int nLocation = nMap.getOrDefault(i, nloc);
-            int mLocation = mMap.getOrDefault(i, mloc);
-            int nLocBefore = nMap.getOrDefault(i-1, 0);
-            int mLocBefore = mMap.getOrDefault(i-1, 0);
-            if(nLocation == mLocation && nLocBefore != mLocBefore) cnt ++;
+        while (aIndex < n || bIndex < m) {
+            currentTime++;
+            // 로봇 A 이동
+            if (aIndex < n && aTimeLeft > 0) {
+                if (A[aIndex].d == 'R') aPos++;
+                else aPos--;
+                aTimeLeft--;
+                if (aTimeLeft == 0) {
+                    aIndex++;
+                    if (aIndex < n) {
+                        aTimeLeft = A[aIndex].t;
+                    }
+                }
+            }
+
+            // 로봇 B 이동
+            if (bIndex < m && bTimeLeft > 0) {
+                if (B[bIndex].d == 'R') bPos++;
+                else bPos--;
+                bTimeLeft--;
+                if (bTimeLeft == 0) {
+                    bIndex++;
+                    if (bIndex < m) {
+                        bTimeLeft = B[bIndex].t;
+                    }
+                }
+            }
+
+            if (aPos == bPos && prevAPos != prevBPos) {
+                cnt++;
+            }
+
+            prevAPos = aPos;
+            prevBPos = bPos;
         }
 
         System.out.println(cnt);
-
-    
     }
-} 
+}
