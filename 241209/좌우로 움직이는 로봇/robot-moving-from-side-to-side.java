@@ -21,7 +21,7 @@ public class Main {
                 else nloc--;
                 
                 nMap.put(j, nloc);
-               // System.out.println( j + ", n위치" + nloc);
+                //System.out.println( j + ", n위치" + nloc);
             }
             nbefore += sec;
         }
@@ -37,7 +37,7 @@ public class Main {
                 else mloc--;
                 
                 mMap.put(j, mloc);
-               // System.out.println( j + ", m위치" + mloc);
+                //System.out.println( j + ", m위치" + mloc);
             }
             mbefore += sec;
         }
@@ -49,7 +49,10 @@ public class Main {
 
         for(int i = 1 ; i <= leng ; i ++) {
             if(nMap.getOrDefault(i, nloc) == mMap.getOrDefault(i, mloc)) {
-                if(nMap.getOrDefault(i-1, nloc) != mMap.getOrDefault(i-1, mloc) && i-1 != 0) cnt ++;
+                if(nMap.getOrDefault(i-1, nloc) != mMap.getOrDefault(i-1, mloc)) {
+                    //System.out.println((i-1) + " : " + nMap.getOrDefault(i, nloc)); 
+                    cnt++;
+                }
             }
         }
 
