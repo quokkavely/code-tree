@@ -49,7 +49,7 @@ public class Main {
 
         for(int i = 1 ; i <= leng ; i ++) {
             if(nMap.getOrDefault(i, nloc) == mMap.getOrDefault(i, mloc)) {
-                if(nMap.getOrDefault(i-1, nloc) != mMap.getOrDefault(i-1, mloc)) cnt ++;
+                if(nMap.getOrDefault(i-1, nloc) != mMap.getOrDefault(i-1, mloc) && i-1 != 0) cnt ++;
             }
         }
 
