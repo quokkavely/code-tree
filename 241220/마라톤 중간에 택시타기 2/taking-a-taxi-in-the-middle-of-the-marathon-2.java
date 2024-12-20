@@ -18,7 +18,7 @@ public class Main {
         for(int i = 1; i < n ; i++) {
             //i를 제외하고 거리 계산
             for(int j = 1; j < n ; j ++) {
-                if( i != j ) {
+                if( i != j || j == n-1) {
                     int nx = arr[j][0];
                     int ny = arr[j][1];
                     distance += Math.abs(nx-x) + Math.abs(ny - y);
